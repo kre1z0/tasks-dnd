@@ -1,0 +1,17 @@
+.columnWrapper {
+  position: relative;
+  top: 1px;
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+  border-top: none;
+  width: calc(100% / 3 - 15px);
+  min-height: 100%;
+  .column {
+    width: 100%;
+    padding: 0 10px 10px 10px;
+    min-height: 100%;
+  }
+  @media (max-width: 1024px) {
+    flex: 0 0 450px;
+    margin-right: 15px;
+  }
+}

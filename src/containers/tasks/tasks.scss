@@ -1,0 +1,43 @@
+@import "../../assets/base/colors";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  .header {
+    will-change: transform;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 55px;
+    .title {
+      font-size: 1.142rem;
+      font-weight: 500;
+      padding: 20px 10px;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+      width: calc(100% / 3 - 15px);
+      @media (max-width: 1024px) {
+        flex: 0 0 450px;
+        margin-right: 15px;
+      }
+    }
+  }
+  .bodyScroll {
+    overflow: auto;
+    flex: 1 1 0;
+    height: 100%;
+    &:after {
+      content: '';
+      display: block;
+      height: 20px;
+    }
+    .main {
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      flex: 0 0 auto;
+      min-height: 100%;
+    }
+  }
+}
