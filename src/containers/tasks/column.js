@@ -23,6 +23,18 @@ function collect(connect, monitor) {
         isOverCurrent: monitor.isOver({ shallow: true }),
     };
 }
+const bgColorSwitcher = value => {
+    switch (value) {
+        case 1:
+            return 'rgba(157, 163, 170, .1)';
+        case 2:
+            return 'rgba(247, 193, 52, .4)';
+        case 3:
+            return 'rgba(100, 199, 108, .4)';
+        default:
+            return 'rgba(157, 163, 170, .1)';
+    }
+};
 
 class Column extends Component {
     state = {
@@ -47,7 +59,7 @@ class Column extends Component {
                     backgroundColor:
                         (isOverCurrent && notCurrentCol) ||
                         (isOver && greedy && notCurrentCol)
-                            ? 'red'
+                            ? bgColorSwitcher(value)
                             : '',
                 }}
                 className={styles.columnWrapper}

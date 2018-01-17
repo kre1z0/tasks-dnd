@@ -71,7 +71,6 @@ class Tasks extends Component {
 
     render() {
         const { scrollWidth, scrollLeft, data, dragItem } = this.state;
-        console.log('--> dragItem', dragItem);
 
         return (
             <div className={styles.container}>
