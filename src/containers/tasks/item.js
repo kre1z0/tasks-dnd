@@ -14,6 +14,13 @@ const itemSource = {
         onBeginDrag && onBeginDrag(props);
         return {};
     },
+    endDrag(props, monitor, component) {
+        const { onBeginDrag } = props;
+        const didDrop = monitor.didDrop();
+        if (!didDrop) {
+            onBeginDrag && onBeginDrag();
+        }
+    },
 };
 
 function collect(connect, monitor) {

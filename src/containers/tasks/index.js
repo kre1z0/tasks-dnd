@@ -43,10 +43,6 @@ class Tasks extends Component {
         }
     }
 
-    //shouldComponentUpdate(nextProps, nextState) {
-    //    console.log('--> shouldComponentUpdate <--');
-    //}
-
     onBodyScroll = ({ target }) => {
         const scrollLeft = target.scrollLeft;
         if (scrollLeft !== this.state.scrollLeft) {
@@ -61,6 +57,10 @@ class Tasks extends Component {
         if ((item && item.id) !== (dragItem && dragItem.id)) {
             this.setState({
                 dragItem: item,
+            });
+        } else {
+            this.setState({
+                dragItem: null,
             });
         }
     };
