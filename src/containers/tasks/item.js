@@ -9,13 +9,9 @@ import styles from './item.scss';
 
 const itemSource = {
     beginDrag(props, monitor, component) {
-        const { onChangeTask } = props;
-        onChangeTask && onChangeTask(props);
+        const { onBeginDrag } = props;
+        onBeginDrag && onBeginDrag(props);
         return {};
-    },
-    endDrag(props, monitor, component) {
-        const { onChangeTask } = props;
-        onChangeTask && onChangeTask();
     },
 };
 
@@ -26,6 +22,7 @@ function collect(connect, monitor) {
         connectDragSource: connect.dragSource(),
         // You can ask the monitor about the current drag state:
         isDragging: monitor.isDragging(),
+        didDrop: monitor.didDrop(),
     };
 }
 
@@ -39,7 +36,7 @@ class Item extends Component {
             connectDragSource,
             dragItem,
         } = this.props;
-
+        console.log('--> Item UP');
         return connectDragSource(
             <div
                 className={cn(styles.item, {
@@ -49,7 +46,12 @@ class Item extends Component {
                 <Avatar src={imgSrc} />
                 <div className={styles.content}>
                     <div className={styles.fullName}>{full_name}</div>
-                    <div className={styles.description}>{description}</div>
+                    <div
+                        className={styles.description}
+                        dangerouslySetInnerHTML={{
+                            __html: description,
+                        }}
+                    />
                 </div>
             </div>,
         );

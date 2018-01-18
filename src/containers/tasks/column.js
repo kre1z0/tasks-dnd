@@ -6,13 +6,12 @@ import styles from './column.scss';
 
 const columnTarget = {
     drop(props, monitor, component) {
+        const { onEndDrag, value } = props;
         const hasDroppedOnChild = monitor.didDrop();
         if (hasDroppedOnChild && !props.greedy) {
             return;
         }
-        component.setState({
-            hasDropped: true,
-        });
+        onEndDrag && onEndDrag(value);
     },
 };
 
@@ -37,9 +36,6 @@ const bgColorSwitcher = value => {
 };
 
 class Column extends Component {
-    state = {
-        hasDropped: false,
-    };
     render() {
         const {
             children,
@@ -50,9 +46,8 @@ class Column extends Component {
             dragItem,
             value,
         } = this.props;
-        const { hasDropped } = this.state;
         const notCurrentCol = dragItem && !(dragItem.status === value);
-
+        console.log('--> COLUMN UP');
         return connectDropTarget(
             <div
                 style={{

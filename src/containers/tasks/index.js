@@ -56,22 +56,37 @@ class Tasks extends Component {
         }
     };
 
-    onChangeTask = dragItem => {
-        console.log('--> onChangeTask', dragItem);
-        if (dragItem) {
+    onBeginDrag = item => {
+        const { dragItem } = this.state;
+        if ((item && item.id) !== (dragItem && dragItem.id)) {
             this.setState({
-                dragItem,
-            });
-        } else {
-            this.setState({
-                dragItem: null,
+                dragItem: item,
             });
         }
     };
 
+    onEndDrag = value => {
+        const { dragItem, data } = this.state;
+        if (dragItem.status !== value) {
+            const copyData = data.slice();
+            const changeTaskStatus = copyData.map(task => {
+                if (task.id === dragItem.id) {
+                    task.status = value;
+                }
+                return task;
+            });
+            this.setState({
+                data: changeTaskStatus,
+            });
+        }
+        this.setState({
+            dragItem: null,
+        });
+    };
+
     render() {
         const { scrollWidth, scrollLeft, data, dragItem } = this.state;
-
+        console.log('--> tasks UP');
         return (
             <div className={styles.container}>
                 <div
@@ -112,6 +127,7 @@ class Tasks extends Component {
                                     value={value}
                                     key={value + '-block'}
                                     dragItem={dragItem}
+                                    onEndDrag={this.onEndDrag}
                                 >
                                     {dates.map((date, i) => {
                                         const tasks = dateGroup[date];
@@ -120,13 +136,16 @@ class Tasks extends Component {
                                                 key={`${date}-${i}`}
                                                 date={date}
                                             >
-                                                {tasks.map(item => (
+                                                {tasks.map((item, i) => (
                                                     <Item
                                                         dragItem={dragItem}
-                                                        onChangeTask={
-                                                            this.onChangeTask
+                                                        onBeginDrag={
+                                                            this.onBeginDrag
                                                         }
-                                                        key={item.id}
+                                                        onEndDrag={
+                                                            this.onEndDrag
+                                                        }
+                                                        key={`${item.id}-${i}`}
                                                         {...item}
                                                     />
                                                 ))}

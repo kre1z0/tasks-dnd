@@ -21,7 +21,8 @@ const testData = [
         imgSrc: 'http://www.promvishivka.ru/images/examples/novorossia15.jpg',
         date: '2017-09-22T04:00:00+00:00',
         full_name: 'Vladimir',
-        description: 'забрать тянку c ЛЫНЫРЫ в белокаменную',
+        description:
+            '1. Забрать тянку c ЛЫНЫРЫ в белокаменную <br/> 2. Стать архитектором всея Руси и построить Москва-Сити в Волгограде',
         status: 2,
     },
     {
