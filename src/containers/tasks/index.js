@@ -31,7 +31,6 @@ class Tasks extends Component {
         scrollWidth: 0,
         scrollLeft: 0,
         data: testData,
-        dragItem: null,
     };
 
     componentDidMount() {
@@ -52,35 +51,22 @@ class Tasks extends Component {
         }
     };
 
-    onBeginDrag = dragItem => {
-        if (dragItem) {
-            this.setState({
-                dragItem,
-            });
-        } else {
-            this.setState({
-                dragItem: null,
-            });
-        }
-    };
-
-    onEndDrag = value => {
-        const { dragItem, data } = this.state;
+    onEndDrag = (value, id) => {
+        const { data } = this.state;
         const copyData = data.slice();
         const changeTaskStatus = copyData.map(task => {
-            if (task.id === dragItem.id) {
+            if (task.id === id) {
                 task.status = value;
             }
             return task;
         });
         this.setState({
-            dragItem: null,
             data: changeTaskStatus,
         });
     };
 
     render() {
-        const { scrollWidth, scrollLeft, data, dragItem } = this.state;
+        const { scrollWidth, scrollLeft, data } = this.state;
 
         return (
             <div className={styles.container}>
@@ -121,7 +107,6 @@ class Tasks extends Component {
                                 <Column
                                     value={value}
                                     key={value + '-block'}
-                                    dragItem={dragItem}
                                     onEndDrag={this.onEndDrag}
                                 >
                                     {dates.map((date, i) => {
@@ -133,13 +118,7 @@ class Tasks extends Component {
                                             >
                                                 {tasks.map((item, i) => (
                                                     <Item
-                                                        dragItem={dragItem}
-                                                        onBeginDrag={
-                                                            this.onBeginDrag
-                                                        }
-                                                        onEndDrag={
-                                                            this.onEndDrag
-                                                        }
+                                                        value={value}
                                                         key={`${item.id}-${i}`}
                                                         {...item}
                                                     />

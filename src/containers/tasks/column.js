@@ -6,9 +6,21 @@ import itemTypes from './item-types';
 import styles from './column.scss';
 
 const columnTarget = {
+    hover(props, monitor, component) {
+        // You can disallow drop based on props or item
+        const item = monitor.getItem();
+        if (props.value !== item.status) {
+            component.setState({
+                hovered: true,
+            });
+        }
+    },
     drop(props, monitor, component) {
         const { onEndDrag, value } = props;
-        onEndDrag && onEndDrag(value);
+        const item = monitor.getItem();
+        if (props.value !== item.status) {
+            onEndDrag && onEndDrag(value, item.id);
+        }
     },
 };
 
@@ -16,9 +28,9 @@ function collect(connect, monitor) {
     return {
         connectDropTarget: connect.dropTarget(),
         isOver: monitor.isOver(),
-        isOverCurrent: monitor.isOver({ shallow: true }),
     };
 }
+
 const bgColorSwitcher = value => {
     switch (value) {
         case 1:
@@ -37,30 +49,22 @@ class Column extends Component {
         children: PropTypes.array,
         connectDropTarget: PropTypes.func,
         value: PropTypes.number,
-        isOverCurrent: PropTypes.bool,
         isOver: PropTypes.bool,
-        dragItem: PropTypes.object,
+    };
+
+    state = {
+        hovered: false,
     };
 
     render() {
-        const {
-            children,
-            connectDropTarget,
-            isOverCurrent,
-            isOver,
-            dragItem,
-            value,
-        } = this.props;
-        const notCurrentCol = dragItem && !(dragItem.status === value);
+        const { children, connectDropTarget, isOver, value } = this.props;
+        const { hovered } = this.state;
 
         return connectDropTarget(
             <div
                 style={{
                     backgroundColor:
-                        (isOverCurrent && notCurrentCol) ||
-                        (isOver && notCurrentCol)
-                            ? bgColorSwitcher(value)
-                            : '',
+                        hovered && isOver ? bgColorSwitcher(value) : '',
                 }}
                 className={styles.columnWrapper}
             >

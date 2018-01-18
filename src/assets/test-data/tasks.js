@@ -2,7 +2,7 @@ const testData = [
     {
         id: 1,
         imgSrc: 'https://hpc.by/wp-content/uploads/2015/04/touchpad_s.jpg',
-        date: '2017-06-22T04:00:00+00:00',
+        date: '2049-06-22T04:00:00+00:00',
         full_name: 'Анон Энтлебухер Зенненхунд Баскетсон',
         description:
             '1) Найти работу. <br/>  2) Излечится от перфекционизма. <br/>  3) Не кодировать новый фреймворк, так как админ конфы пишет на реакте и не хочет остатся без работки.',
@@ -101,6 +101,16 @@ const testData = [
         full_name: 'Yo',
         description:
             '1) Вдуть ЭОТ. <br/> 2) Закончить школу на пятерки. <br/> 3) Купить вертолет.',
+        status: 1,
+    },
+    {
+        id: 12,
+        imgSrc:
+            'https://znaj.ua/sites/default/files/styles/open_news/public/media/news/2017/09/39/1-2.jpg?itok=-gmnLLr_',
+        date: '2018-12-22T04:00:00+00:00',
+        full_name: 'Vladislav',
+        description:
+            '1) Погладить свое теплое тело. <br/> 2) Сводить себя в кафе.',
         status: 1,
     },
 ];

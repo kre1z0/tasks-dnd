@@ -10,17 +10,7 @@ import styles from './item.scss';
 
 const itemSource = {
     beginDrag(props, monitor, component) {
-        const { onBeginDrag } = props;
-        onBeginDrag && onBeginDrag(props);
-        return {};
-    },
-    endDrag(props, monitor, component) {
-        const { onBeginDrag } = props;
-        const didDrop = monitor.didDrop();
-        if (!didDrop) {
-            onBeginDrag && onBeginDrag();
-        }
-        return {};
+        return props;
     },
 };
 
@@ -31,35 +21,38 @@ function collect(connect, monitor) {
         connectDragSource: connect.dragSource(),
         // You can ask the monitor about the current drag state:
         isDragging: monitor.isDragging(),
-        didDrop: monitor.didDrop(),
     };
 }
 
 class Item extends Component {
     static propTypes = {
-        id: PropTypes.number,
         imgSrc: PropTypes.string,
         full_name: PropTypes.string,
         description: PropTypes.string,
         connectDragSource: PropTypes.func,
-        dragItem: PropTypes.object,
         alt: PropTypes.string,
+        isDragging: PropTypes.bool,
     };
+
+    shouldComponentUpdate(nextProps, nextState) {
+        const { isDragging } = this.props;
+        return isDragging !== nextProps.isDragging;
+    }
 
     render() {
         const {
-            id,
             imgSrc,
             full_name,
             description,
             connectDragSource,
-            dragItem,
             alt,
+            isDragging,
         } = this.props;
+
         return connectDragSource(
             <div
                 className={cn(styles.item, {
-                    [styles.dragged]: dragItem && dragItem.id === id,
+                    [styles.dragged]: isDragging,
                 })}
             >
                 <Avatar
