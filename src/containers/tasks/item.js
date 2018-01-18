@@ -20,6 +20,7 @@ const itemSource = {
         if (!didDrop) {
             onBeginDrag && onBeginDrag();
         }
+        return {};
     },
 };
 

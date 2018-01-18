@@ -8,10 +8,6 @@ import styles from './column.scss';
 const columnTarget = {
     drop(props, monitor, component) {
         const { onEndDrag, value } = props;
-        const hasDroppedOnChild = monitor.didDrop();
-        if (hasDroppedOnChild && !props.greedy) {
-            return;
-        }
         onEndDrag && onEndDrag(value);
     },
 };
@@ -43,7 +39,6 @@ class Column extends Component {
         value: PropTypes.number,
         isOverCurrent: PropTypes.bool,
         isOver: PropTypes.bool,
-        greedy: PropTypes.bool,
         dragItem: PropTypes.object,
     };
 
@@ -53,7 +48,6 @@ class Column extends Component {
             connectDropTarget,
             isOverCurrent,
             isOver,
-            greedy,
             dragItem,
             value,
         } = this.props;
@@ -64,7 +58,7 @@ class Column extends Component {
                 style={{
                     backgroundColor:
                         (isOverCurrent && notCurrentCol) ||
-                        (isOver && greedy && notCurrentCol)
+                        (isOver && notCurrentCol)
                             ? bgColorSwitcher(value)
                             : '',
                 }}

@@ -52,11 +52,10 @@ class Tasks extends Component {
         }
     };
 
-    onBeginDrag = item => {
-        const { dragItem } = this.state;
-        if ((item && item.id) !== (dragItem && dragItem.id)) {
+    onBeginDrag = dragItem => {
+        if (dragItem) {
             this.setState({
-                dragItem: item,
+                dragItem,
             });
         } else {
             this.setState({
@@ -67,20 +66,16 @@ class Tasks extends Component {
 
     onEndDrag = value => {
         const { dragItem, data } = this.state;
-        if (dragItem.status !== value) {
-            const copyData = data.slice();
-            const changeTaskStatus = copyData.map(task => {
-                if (task.id === dragItem.id) {
-                    task.status = value;
-                }
-                return task;
-            });
-            this.setState({
-                data: changeTaskStatus,
-            });
-        }
+        const copyData = data.slice();
+        const changeTaskStatus = copyData.map(task => {
+            if (task.id === dragItem.id) {
+                task.status = value;
+            }
+            return task;
+        });
         this.setState({
             dragItem: null,
+            data: changeTaskStatus,
         });
     };
 
