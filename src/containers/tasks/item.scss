@@ -14,6 +14,9 @@
   &:last-child {
     margin-bottom: 0;
   }
+  .avatar {
+    align-self: flex-start;
+  }
   .content {
     padding-left: 10px;
     .fullName {
@@ -21,6 +24,7 @@
       color: $steel;
     }
     .description {
+      line-height: normal;
       margin-top: 4px;
       font-size: 0.9rem;
       color: $coolGrayTwo;

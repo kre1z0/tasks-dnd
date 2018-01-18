@@ -4,17 +4,17 @@ const testData = [
         imgSrc: 'https://hpc.by/wp-content/uploads/2015/04/touchpad_s.jpg',
         date: '2017-06-22T04:00:00+00:00',
         full_name: 'Анон Энтлебухер Зенненхунд Баскетсон',
-        description: 'найти работу',
+        description:
+            '1) Найти работу. <br/>  2) Излечится от перфекционизма. <br/>  3) Не кодировать новый фреймворк, так как админ конфы пишет на реакте и не хочет остатся без работки.',
         status: 1,
     },
     {
         id: 6,
-        imgSrc:
-            'http://i0.kym-cdn.com/photos/images/facebook/000/925/493/19f.jpg',
+        imgSrc: 'https://i.ytimg.com/vi/puXdOPt0Afo/maxresdefault.jpg',
         date: '2017-06-22T04:00:00+00:00',
         full_name: 'Lancelap Lancelapovich',
-        description: 'посмотреть все аниме',
-        status: 2,
+        description: '1) Посмотреть все аниме.',
+        status: 3,
     },
     {
         id: 2,
@@ -22,35 +22,39 @@ const testData = [
         date: '2017-09-22T04:00:00+00:00',
         full_name: 'Vladimir',
         description:
-            '1. Забрать тянку c ЛЫНЫРЫ в белокаменную <br/> 2. Стать архитектором всея Руси и построить Москва-Сити в Волгограде',
+            '1) Забрать тянку c ЛЫНЫРЫ в белокаменную. <br/> 2) Стать архитектором всея Руси и построить Москва-Сити в Волгограде.',
         status: 2,
     },
     {
         id: 4,
         imgSrc:
-            'http://i0.kym-cdn.com/photos/images/facebook/000/925/493/19f.jpg',
+            'http://www.kartinki24.ru/uploads/gallery/main/83/kartinki24_ru_country_flags_141.jpg',
         date: '2017-07-22T04:00:00+00:00',
-        full_name: 'Иванов Иван Иванович 2',
-        description: 'dasdadasdasdas',
+        full_name: 'Узбек',
+        description:
+            '1) Вдуть ЭОТ. <br/> 2) Закончить Гарвард. <br/> 3) Собрать весь урожай хлопка.',
         status: 2,
     },
     {
         id: 3,
         imgSrc:
-            'http://i0.kym-cdn.com/photos/images/facebook/000/925/493/19f.jpg',
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Hammer_and_sickle.svg/150px-Hammer_and_sickle.svg.png',
+        alt: 'серп и молот',
         date: '2017-09-22T04:00:00+00:00',
-        full_name: 'Иванов Иван Иванович 22',
-        description: 'dasdadasdasdas',
+        full_name: 'asm.jaime',
+        description:
+            '1) Коммунизм во всем мире. (на самом деле он и так скоро наступит только на Дальнем Востоке и если кодировать на Vue.js он наступит еще быстрей). <br/> 2) Обязательное использование Vim на территории РФ.',
         status: 2,
     },
     {
         id: 5,
         imgSrc:
-            'http://i0.kym-cdn.com/photos/images/facebook/000/925/493/19f.jpg',
+            'https://www.epam-group.ru/etc/designs/epam-core/images/common/logo.png',
         date: '2017-10-22T04:00:00+00:00',
-        full_name: 'Иванов Иван Иванович 3',
-        description: 'dasdadasdasdas',
-        status: 3,
+        full_name: 'alexander_power ',
+        description:
+            '1) Устроится тимлидом в epam. <br/> 2) Cтать генеральным директором epam. <br/> 3) Выкупить контрольный пакет акций epam. <br/> 4) Не заставлять сотрудников танцевать и петь на камеру﻿.',
+        status: 1,
     },
 ];
 

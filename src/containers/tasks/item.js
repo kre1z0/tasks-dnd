@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import cn from 'classnames';
 import { DragSource } from 'react-dnd';
 
@@ -27,6 +28,16 @@ function collect(connect, monitor) {
 }
 
 class Item extends Component {
+    static propTypes = {
+        id: PropTypes.number,
+        imgSrc: PropTypes.string,
+        full_name: PropTypes.string,
+        description: PropTypes.string,
+        connectDragSource: PropTypes.func,
+        dragItem: PropTypes.object,
+        alt: PropTypes.string,
+    };
+
     render() {
         const {
             id,
@@ -35,15 +46,20 @@ class Item extends Component {
             description,
             connectDragSource,
             dragItem,
+            alt,
         } = this.props;
-        console.log('--> Item UP');
         return connectDragSource(
             <div
                 className={cn(styles.item, {
                     [styles.dragged]: dragItem && dragItem.id === id,
                 })}
             >
-                <Avatar src={imgSrc} />
+                <Avatar
+                    title={alt}
+                    className={styles.avatar}
+                    alt={alt}
+                    src={imgSrc}
+                />
                 <div className={styles.content}>
                     <div className={styles.fullName}>{full_name}</div>
                     <div

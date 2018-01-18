@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
 
 import itemTypes from './item-types';
@@ -36,6 +37,16 @@ const bgColorSwitcher = value => {
 };
 
 class Column extends Component {
+    static propTypes = {
+        children: PropTypes.array,
+        connectDropTarget: PropTypes.func,
+        value: PropTypes.number,
+        isOverCurrent: PropTypes.bool,
+        isOver: PropTypes.bool,
+        greedy: PropTypes.bool,
+        dragItem: PropTypes.object,
+    };
+
     render() {
         const {
             children,
@@ -47,7 +58,7 @@ class Column extends Component {
             value,
         } = this.props;
         const notCurrentCol = dragItem && !(dragItem.status === value);
-        console.log('--> COLUMN UP');
+
         return connectDropTarget(
             <div
                 style={{

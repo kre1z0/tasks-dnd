@@ -9,13 +9,15 @@ class Avatar extends Component {
         className: PropTypes.string,
         src: PropTypes.string,
         alt: PropTypes.string,
+        title: PropTypes.string,
     };
 
     render() {
-        const { alt, src, className } = this.props;
+        const { alt, src, className, title } = this.props;
         return (
             <img
                 {...this.props}
+                title={title}
                 alt={alt}
                 src={src}
                 className={cn(styles.avatar, className)}
