@@ -21,9 +21,9 @@ const Title = ({ color, title }) => (
 );
 
 const STATUS = [
-    { title: 'Назначенные', color: coolGreyTwo, value: 1 },
-    { title: 'В работе', color: macaroniAndCheese, value: 2 },
-    { title: 'Выполненные', color: softGreen, value: 3 },
+    { title: 'Assigned', color: coolGreyTwo, value: 1 },
+    { title: 'In work', color: macaroniAndCheese, value: 2 },
+    { title: 'Completed', color: softGreen, value: 3 },
 ];
 
 class Tasks extends Component {

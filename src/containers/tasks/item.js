@@ -28,7 +28,7 @@ class Item extends Component {
     static propTypes = {
         imgSrc: PropTypes.string,
         full_name: PropTypes.string,
-        description: PropTypes.string,
+        email: PropTypes.string,
         connectDragSource: PropTypes.func,
         alt: PropTypes.string,
         isDragging: PropTypes.bool,
@@ -43,7 +43,7 @@ class Item extends Component {
         const {
             imgSrc,
             full_name,
-            description,
+            email,
             connectDragSource,
             alt,
             isDragging,
@@ -66,7 +66,7 @@ class Item extends Component {
                     <div
                         className={styles.description}
                         dangerouslySetInnerHTML={{
-                            __html: description,
+                            __html: email,
                         }}
                     />
                 </div>
